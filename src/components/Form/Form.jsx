@@ -4,15 +4,29 @@ import PropTypes from 'prop-types';
 export default function Form({ onSubmit }) {
   const [data, setData] = useState({ name: '', number: '' });
 
+  // const handleChange = e => {
+  //   if (e.target.name === 'name')
+  //     setData(prev => {
+  //       return { ...prev, name: e.target.value };
+  //     });
+  //   else if (e.target.name === 'number')
+  //     setData(prev => {
+  //       return { ...prev, number: e.target.value };
+  //     });
+  // };
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   onSubmit(data);
+  //   setData({ name: '', number: '' });
+  // };
+
   const handleChange = e => {
-    if (e.target.name === 'name')
-      setData(prev => {
-        return { ...prev, name: e.target.value };
-      });
-    else if (e.target.name === 'number')
-      setData(prev => {
-        return { ...prev, number: e.target.value };
-      });
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
   };
 
   const handleSubmit = e => {
